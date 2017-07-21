@@ -1,0 +1,63 @@
+<div class="shell" flex>
+    <div ng-controller="MirrorController as $mCtrl"
+            class="content md-whiteframe-12dp"
+         flex layout="column">
+        <div flex layout="row" class="mirror-content">
+            <div flex></div>
+            <div flex="40"
+                 class="mirror-left mirror-frame"
+                 id="mirror-left">
+                <img ng-if="uploadedImage.uploaded"
+                     id="mirror-left-image"
+                     class="mirror-image"
+                     ng-src="{{uploadedImage.dataUrl}}">
+            </div>
+            <div flex="5"></div>
+            <div flex="40"
+                 class="mirror-right mirror-frame"
+                 id="mirror-right"
+                 layout="column">
+                <img ng-if="responseImage.responded"
+                     id="mirror-right-image"
+                     class="mirror-image"
+                     ng-src="{{responseImage.dataUrl}}">
+                <div flex layout="column"
+                     ng-if="waiting">
+                    <div flex="30"></div>
+                    <div flex layout="row">
+                        <div flex="30"></div>
+                        <md-progress-circular
+                                flex
+                                class="progress-waiting">
+                        </md-progress-circular>
+                        <div flex="30"></div>
+                    </div>
+                    <div flex="30"></div>
+                </div>
+
+            </div>
+            <div flex></div>
+        </div>
+        <div flex="20" class="mirror-footer" layout="row">
+            <div flex></div>
+
+            <div flex="20">
+                <input class="ng-hide"
+                       id="upload-image"
+                       type="file"
+                       onchange="angular.element(this).scope().add(this)"
+                       ng-disabled="waiting"/>
+                <label flex
+                       for="upload-image"
+                       class="md-button md-raised md-primary"
+                       ng-disabled="waiting">
+                    Upload Image
+                </label>
+            </div>
+            <!--<md-button class="md-raised md-primary" flex="20">-->
+                <!--Take Image-->
+            <!--</md-button>-->
+            <div flex></div>
+        </div>
+    </div>
+</div>
